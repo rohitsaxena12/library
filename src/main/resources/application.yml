@@ -1,0 +1,94 @@
+server:
+  port: 0
+  
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    leaseRenewalIntervalInSeconds: 30
+    leaseExpirationDurationInSeconds: 90
+    
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+    org.springframework.web.cors: DEBUG
+  file: D:/Ness/FullStack/POC/Logs/${spring.application.name}.log
+
+mongo:
+  db:
+    user: P7109857
+    password: *******
+    host: 172.26.116.75
+    port: 27017
+    database: test 
+---
+  
+spring:
+  profiles: t9dssa01
+
+server:
+  port: 0  
+  
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://t9dssa01:8761/eureka/, http://t9dssa02:8761/eureka/
+  instance:
+    hostname: t9dssa01
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    leaseRenewalIntervalInSeconds: 30
+    leaseExpirationDurationInSeconds: 90
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+
+dashcontroller:
+  keystorePath: /apps/dss/keys/pan.jks
+  keystorePassword: devpan
+  panalias: devpan
+
+---
+  
+spring:
+  profiles: t9dssa02
+
+server:
+  port: 0  
+   
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://t9dssa02:8761/eureka/, http://t9dssa01:8761/eureka/
+  instance:
+    hostname: t9dssa02
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    leaseRenewalIntervalInSeconds: 30
+    leaseExpirationDurationInSeconds: 90
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+
+dashcontroller:
+  keystorePath: /apps/dss/keys/pan.jks
+  keystorePassword: devpan
+  panalias: devpan
+
