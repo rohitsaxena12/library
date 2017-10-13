@@ -23,8 +23,8 @@ logging:
 
 mongo:
   db:
-    user: P7109857
-    password: *******
+    user: P7109321
+    password: Swat$3276
     host: 172.26.116.75
     port: 27017
     database: test 

@@ -16,7 +16,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Configure the main class of our Spring Boot application -->
-        <start-class>com.ness.fse.TodoAppConfig</start-class>
+        <start-class>com.ness.services.LibraryServiceApplication</start-class>
     </properties>
 
     <!-- Inherit defaults from Spring Boot -->
